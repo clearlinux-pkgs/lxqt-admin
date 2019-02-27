@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x42C9C8D3AF5EA5E3 (agaida@siduction.org)
 #
 Name     : lxqt-admin
-Version  : 0.14.0
-Release  : 1
-URL      : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.0/lxqt-admin-0.14.0.tar.xz
-Source0  : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.0/lxqt-admin-0.14.0.tar.xz
-Source99 : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.0/lxqt-admin-0.14.0.tar.xz.asc
+Version  : 0.14.1
+Release  : 2
+URL      : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.1/lxqt-admin-0.14.1.tar.xz
+Source0  : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.1/lxqt-admin-0.14.1.tar.xz
+Source99 : https://downloads.lxqt.org/downloads/lxqt-admin/0.14.1/lxqt-admin-0.14.1.tar.xz.asc
 Summary  : LXQt system administration tool.
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -56,14 +56,14 @@ license components for the lxqt-admin package.
 
 
 %prep
-%setup -q -n lxqt-admin-0.14.0
+%setup -q -n lxqt-admin-0.14.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549313672
+export SOURCE_DATE_EPOCH=1551230255
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -71,7 +71,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549313672
+export SOURCE_DATE_EPOCH=1551230255
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-admin
 cp COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/COPYING
@@ -99,6 +99,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_da.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_de.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_el.qm
+/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_en_GB.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_es.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_fr.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_gl.qm
@@ -127,6 +128,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_da.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_de.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_el.qm
+/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_en_GB.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_es.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_fr.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_gl.qm
