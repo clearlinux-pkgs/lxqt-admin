@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : lxqt-admin
-Version  : 0.16.0
-Release  : 6
-URL      : https://github.com/lxqt/lxqt-admin/releases/download/0.16.0/lxqt-admin-0.16.0.tar.xz
-Source0  : https://github.com/lxqt/lxqt-admin/releases/download/0.16.0/lxqt-admin-0.16.0.tar.xz
-Source1  : https://github.com/lxqt/lxqt-admin/releases/download/0.16.0/lxqt-admin-0.16.0.tar.xz.asc
+Version  : 0.17.0
+Release  : 7
+URL      : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz
+Source0  : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz
+Source1  : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -19,9 +19,10 @@ Requires: lxqt-admin-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kwindowsystem-dev
-BuildRequires : liblxqt-data
 BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
+BuildRequires : pkg-config
+BuildRequires : pkgconfig(libsystemd)
 BuildRequires : polkit-qt
 BuildRequires : polkit-qt-dev
 BuildRequires : qtbase-dev
@@ -29,8 +30,8 @@ BuildRequires : qtbase-dev
 %description
 # lxqt-admin
 ## Overview
-This repository is providing two GUI tools to adjust settings of the operating
-system LXQt is running on.
+This repository provides two GUI tools to adjust settings of the operating system LXQt
+is running on.
 
 %package bin
 Summary: bin components for the lxqt-admin package.
@@ -59,15 +60,15 @@ license components for the lxqt-admin package.
 
 
 %prep
-%setup -q -n lxqt-admin-0.16.0
-cd %{_builddir}/lxqt-admin-0.16.0
+%setup -q -n lxqt-admin-0.17.0
+cd %{_builddir}/lxqt-admin-0.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604541051
+export SOURCE_DATE_EPOCH=1618510323
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -80,10 +81,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604541051
+export SOURCE_DATE_EPOCH=1618510323
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-admin
-cp %{_builddir}/lxqt-admin-0.16.0/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/lxqt-admin-0.17.0/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -104,6 +105,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ar.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_arn.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ast.qm
+/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_bg.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ca.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_cs.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_cy.qm
@@ -112,6 +114,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_el.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_en_GB.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_es.qm
+/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_et.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_fr.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_gl.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_he.qm
@@ -128,6 +131,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_pt.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_pt_BR.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ru.qm
+/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_si.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_tr.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_uk.qm
 /usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_vi.qm
@@ -136,6 +140,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ar.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_arn.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ast.qm
+/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_bg.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ca.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_cs.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_cy.qm
@@ -159,6 +164,7 @@ popd
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_pt.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_pt_BR.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ru.qm
+/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_si.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_tr.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_uk.qm
 /usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_vi.qm
