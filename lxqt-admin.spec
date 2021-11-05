@@ -5,26 +5,21 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : lxqt-admin
-Version  : 0.17.0
-Release  : 7
-URL      : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz
-Source0  : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz
-Source1  : https://github.com/lxqt/lxqt-admin/releases/download/0.17.0/lxqt-admin-0.17.0.tar.xz.asc
+Version  : 1.0.0
+Release  : 9
+URL      : https://github.com/lxqt/lxqt-admin/releases/download/1.0.0/lxqt-admin-1.0.0.tar.xz
+Source0  : https://github.com/lxqt/lxqt-admin/releases/download/1.0.0/lxqt-admin-1.0.0.tar.xz
+Source1  : https://github.com/lxqt/lxqt-admin/releases/download/1.0.0/lxqt-admin-1.0.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: lxqt-admin-bin = %{version}-%{release}
-Requires: lxqt-admin-data = %{version}-%{release}
-Requires: lxqt-admin-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kwindowsystem-dev
 BuildRequires : liblxqt-dev
-BuildRequires : lxqt-build-tools
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libsystemd)
 BuildRequires : polkit-qt
-BuildRequires : polkit-qt-dev
 BuildRequires : qtbase-dev
 
 %description
@@ -33,42 +28,16 @@ BuildRequires : qtbase-dev
 This repository provides two GUI tools to adjust settings of the operating system LXQt
 is running on.
 
-%package bin
-Summary: bin components for the lxqt-admin package.
-Group: Binaries
-Requires: lxqt-admin-data = %{version}-%{release}
-Requires: lxqt-admin-license = %{version}-%{release}
-
-%description bin
-bin components for the lxqt-admin package.
-
-
-%package data
-Summary: data components for the lxqt-admin package.
-Group: Data
-
-%description data
-data components for the lxqt-admin package.
-
-
-%package license
-Summary: license components for the lxqt-admin package.
-Group: Default
-
-%description license
-license components for the lxqt-admin package.
-
-
 %prep
-%setup -q -n lxqt-admin-0.17.0
-cd %{_builddir}/lxqt-admin-0.17.0
+%setup -q -n lxqt-admin-1.0.0
+cd %{_builddir}/lxqt-admin-1.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618510323
+export SOURCE_DATE_EPOCH=1636132264
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -81,96 +50,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618510323
+export SOURCE_DATE_EPOCH=1636132264
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-admin
-cp %{_builddir}/lxqt-admin-0.17.0/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/lxqt-admin-1.0.0/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/lxqt-admin-time
-/usr/bin/lxqt-admin-user
-/usr/bin/lxqt-admin-user-helper
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/applications/lxqt-admin-time.desktop
-/usr/share/applications/lxqt-admin-user.desktop
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ar.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_arn.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ast.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_bg.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ca.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_cs.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_cy.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_da.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_de.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_el.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_en_GB.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_es.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_et.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_fr.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_gl.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_he.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_hr.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_hu.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_id.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_it.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ja.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_lt.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_lv.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_nb_NO.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_nl.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_pl.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_pt.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_pt_BR.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_ru.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_si.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_tr.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_uk.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_vi.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_zh_CN.qm
-/usr/share/lxqt/translations/lxqt-admin-time/lxqt-admin-time_zh_TW.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ar.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_arn.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ast.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_bg.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ca.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_cs.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_cy.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_da.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_de.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_el.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_en_GB.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_es.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_fr.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_gl.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_he.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_hr.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_hu.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_id.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_it.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ja.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_lt.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_nb_NO.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_nl.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_pl.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_pt.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_pt_BR.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_ru.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_si.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_tr.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_uk.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_vi.qm
-/usr/share/lxqt/translations/lxqt-admin-user/lxqt-admin-user_zh_CN.qm
-/usr/share/polkit-1/actions/org.lxqt.lxqt-admin-user.policy
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
