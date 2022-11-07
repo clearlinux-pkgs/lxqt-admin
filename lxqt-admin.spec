@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : lxqt-admin
-Version  : 1.1.0
-Release  : 11
-URL      : https://github.com/lxqt/lxqt-admin/releases/download/1.1.0/lxqt-admin-1.1.0.tar.xz
-Source0  : https://github.com/lxqt/lxqt-admin/releases/download/1.1.0/lxqt-admin-1.1.0.tar.xz
-Source1  : https://github.com/lxqt/lxqt-admin/releases/download/1.1.0/lxqt-admin-1.1.0.tar.xz.asc
+Version  : 1.2.0
+Release  : 12
+URL      : https://github.com/lxqt/lxqt-admin/releases/download/1.2.0/lxqt-admin-1.2.0.tar.xz
+Source0  : https://github.com/lxqt/lxqt-admin/releases/download/1.2.0/lxqt-admin-1.2.0.tar.xz
+Source1  : https://github.com/lxqt/lxqt-admin/releases/download/1.2.0/lxqt-admin-1.2.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -60,15 +60,15 @@ license components for the lxqt-admin package.
 
 
 %prep
-%setup -q -n lxqt-admin-1.1.0
-cd %{_builddir}/lxqt-admin-1.1.0
+%setup -q -n lxqt-admin-1.2.0
+cd %{_builddir}/lxqt-admin-1.2.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650325450
+export SOURCE_DATE_EPOCH=1667855359
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -81,10 +81,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650325450
+export SOURCE_DATE_EPOCH=1667855359
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-admin
-cp %{_builddir}/lxqt-admin-1.1.0/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/lxqt-admin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/lxqt-admin/7fab4cd4eb7f499d60fe183607f046484acd6e2d || :
 pushd clr-build
 %make_install
 popd
